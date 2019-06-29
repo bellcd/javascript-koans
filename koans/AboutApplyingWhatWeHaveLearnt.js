@@ -147,10 +147,48 @@ describe("About Applying What We Have Learnt", function() {
     expect(findLargestPrimeFactorOfComposite(1994)).toBe(997);
   });
 
-  // it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
-  //
-  // });
-  //
+  it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+    function isPalindrome(word) {
+      if (word.length <= 1) {
+        return true;
+      } else {
+        let first = word.slice(0, 1), last = word.slice(-1);
+        if (first === last) {
+          return isPalindrome(word.slice(1, -1));
+        } else {
+          return false;
+        }
+      }
+    }
+    // assume
+      // for the sake of determining what's a palindrome
+        // inputs will be integers
+        // negative numbers become positive, ie >>> -9546459 becomes 9546459
+    function findLargestPalindrome(num1, num2) {
+      // multiply to create number
+      let num = num1 * num2;
+      // get the absolute value
+      num = Math.abs(num);
+      // look downwards towards zero, checking for palindrome
+      for (let i = num; i > 0; i--) {
+        // convert to string
+        let str = i + '';
+        // determine if palindrome
+        if (isPalindrome(str)) {
+          return Number.parseInt(str);
+        }
+      }
+    }
+    expect(findLargestPalindrome(534, 129)).toBe(68886);
+    expect(findLargestPalindrome(-534, -129)).toBe(68886)
+    expect(findLargestPalindrome(100, 100)).toBe(9999);
+    expect(findLargestPalindrome(-100, -100)).toBe(9999);
+    expect(findLargestPalindrome(999, 999)).toBe(997799);
+    expect(findLargestPalindrome(-999, -999)).toBe(997799);
+    expect(findLargestPalindrome(111, 111)).toBe(12321);
+    expect(findLargestPalindrome(-111, -111)).toBe(12321);
+  });
+
   // it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
   //
   //
