@@ -215,10 +215,27 @@ describe("About Applying What We Have Learnt", function() {
 
     expect(findSmallestNumDivisibleBy1To20()).toBe(232792560);
   });
-  //
-  // it("should find the difference between the sum of the squares and the square of the sums", function () {
-  //
-  // });
+
+  it("should find the difference between the sum of the squares and the square of the sums", function () {
+    // assume
+      // input will be an array of numbers
+    function findSumOfSquares(numbers) {
+      return numbers.reduce((acc, elem) => acc + (elem * elem), 0);
+    }
+
+    function findSquareOfSums(numbers) {
+      let sum = numbers.reduce((acc, elem) => acc + elem, 0);
+      return sum * sum;
+    }
+
+    function difference(numbers) {
+      return findSumOfSquares(numbers) - findSquareOfSums(numbers);
+    }
+
+    expect(difference([1, 2, 3])).toBe(-22);
+    expect(difference([-4, -2])).toBe(-16);
+    expect(difference([1.5, -3])).toBe(9);
+  });
   //
   // it("should find the 10001st prime", function () {
   //
