@@ -189,10 +189,32 @@ describe("About Applying What We Have Learnt", function() {
     expect(findLargestPalindrome(-111, -111)).toBe(12321);
   });
 
-  // it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-  //
-  //
-  // });
+  it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
+    // assume
+      // only testing integers
+      function isDivisibleBy1To20(num) {
+          // 1 through 10 are factors of the various numbers 11 - 20, so only need to test divisibility of 11 - 20 for each possible number
+          for (let i = 11; i < 21; i++) {
+            if (num % i !== 0) {
+              return false;
+            }
+          }
+          return true;
+      }
+
+      function findSmallestNumDivisibleBy1To20() {
+        let keepTesting = true;
+        let num = 20;
+        while (keepTesting) {
+          if (isDivisibleBy1To20(num)) {
+            return num;
+          }
+          num++;
+        }
+      }
+
+    expect(findSmallestNumDivisibleBy1To20()).toBe(232792560);
+  });
   //
   // it("should find the difference between the sum of the squares and the square of the sums", function () {
   //
